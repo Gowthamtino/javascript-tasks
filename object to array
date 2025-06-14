@@ -1,0 +1,14 @@
+//object to array
+let a=[1,2,[2,1],1,2,[1,2]]
+let output=[]
+for(let i=0;i<a.length;i++){
+    if(typeof a[i]==="object"){
+        for(let j=0;j<a[i].length;j++){
+            output.push(a[i][j])
+        }
+    }
+    else{
+        output.push(a[i])
+    }
+}
+console.log(output)
