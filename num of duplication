@@ -1,0 +1,23 @@
+//num of duplication
+let a = [1, 1, 1, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 4, 5, 2, 2];
+let output = []
+for (let i = 0; i < a.length; i++) {
+    let count = 0;
+    let isPrinted = false;
+    for (let k = 0; k < output.length; k++) {
+        if (output[k] === a[i]) {
+            isPrinted= true;
+        }
+    }
+    if (isPrinted===false) {
+        for (let j = 0; j < a.length; j++) {
+            if (a[i] === a[j]) {
+                count=count+1;
+            }
+        }
+        if (count > 1) {
+            output.push(a[i]); 
+            console.log(a[i] + " is " + (count - 1) + " time duplicated");
+        }
+    }
+}
