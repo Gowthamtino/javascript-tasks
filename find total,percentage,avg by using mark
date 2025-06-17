@@ -1,0 +1,10 @@
+let mark=[25,50,66,78,99]
+let average
+let percentage
+let total=0
+for(let i=0;i<mark.length;i++){
+    total+=mark[i]
+    average=total/mark.length
+    percentage=(total/500)*100   
+}
+console.log(total,average,percentage);
