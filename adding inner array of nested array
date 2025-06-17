@@ -1,0 +1,16 @@
+let a = [1, 2, [1, 2], 1, 2, [1, 2]]
+let output = []
+for (let i = 0; i < a.length; i++) {
+    let b = a[i];
+    if (typeof b === "object") {
+        let add = 0
+        for (let j = 0; j < b.length; j++) {
+            add += b[j]
+        }
+        output.push(add)
+    }
+    else {
+        output.push(b)
+    }
+}
+console.log(output); //output=[1,2,3,1,2,3]
