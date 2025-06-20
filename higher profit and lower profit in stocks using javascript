@@ -1,0 +1,26 @@
+let a = [5, 9, 90, 100, 10, 11, 15];
+let b = [10, 8, 89, 112, 11, 12, 14];
+let max = 0;
+let min = Infinity;
+let higherProfit 
+let lowerProfit 
+for (let i = 0; i < a.length; i++) {
+    let diff = b[i] - a[i];
+    let profit = diff / a[i]; 
+    if (diff > 0) {
+        if (profit > max) {
+            max = profit
+            higherProfit = a[i];
+        }
+        if (profit < min) {
+            min = profit
+            lowerProfit = a[i];
+        }
+    }
+}
+console.log( higherProfit);
+console.log( lowerProfit);
+
+
+
+    
