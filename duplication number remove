@@ -1,0 +1,15 @@
+//duplication number remove
+let a = [1,1,2,2,3,3,4,5,5,3,5,5]
+let b = []
+for (let i = 0; i < a.length; i++) {
+    let isDuplicate = false;
+    for (let j = 0; j < b.length; j++) {
+        if (a[i] === b[j]) {
+            isDuplicate = true;   
+        }
+    }
+    if (!isDuplicate) {
+        b.push(a[i])
+    }
+}
+console.log(b)
