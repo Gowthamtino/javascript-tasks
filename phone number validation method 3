@@ -1,0 +1,48 @@
+function validNumber(num) {
+    if (typeof num !== "string") {
+        return { success: false, message: "Input is not a string" };
+    }
+    if (num.length !== 10) {
+        return { success: false, message: "Number does not have valid length" };
+    }
+    return { success: true };
+}
+function specialChar(num) {
+    let chars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-"];
+    for (let i = 0; i < num.length; i++) {
+        for (let j = 0; j < chars.length; j++) {
+            if (num[i] === chars[j]) {
+                return { success: false, message: "Number contains special characters" };
+            }
+        }
+    }
+    return { success: true };
+}
+function alpha(num) {
+    let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for (let i = 0; i < num.length; i++) {
+        for (let j = 0; j < alphabet.length; j++) {
+            if (num[i] === alphabet[j]) {
+                return { success: false, message: "Number contains alphabet characters" };
+            }
+        }
+    }
+    return { success: true };
+}
+function result(num) {
+    let first = validNumber(num);
+    let second = specialChar(num);
+    let third = alpha(num);
+    if (first.success == false) {
+        return first;
+    }
+    if (second.success == false) {
+        return second;
+    }
+    if (third.success == false) {
+        return third;
+    }
+        return { success: true, message: "The number is valid" };
+}
+let num = "6369938537";
+console.log(result(num)); //output: { 'success: true, message: The number is valid' }
