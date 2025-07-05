@@ -1,0 +1,44 @@
+function validNumber(num) {
+    if ((typeof num === "string") && (num.length === 10)) {
+        return "valid"
+    }
+    else {
+        return "invalid"
+    }
+}
+function special(num) {
+    let b = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-"]
+    for (let i = 0; i < num.length; i++) {
+        let isMatch = false
+        for (let j = 0; j < b.length; j++) {
+            if (num[i] == b[j]) {
+                isMatch = true
+                return "invalid"
+            }
+        }
+    }
+    return "valid"
+}
+function checkAlpha(num) {
+    let chars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    for (let i = 0; i < num.length; i++) {
+        let isAlpha = false
+        for (let j = 0; j < chars.length; j++) {
+            if (num[i] == chars[j]) {
+                isAlpha = true
+                return "invalid"
+            }
+        }
+    }
+    return "valid"
+}
+function result(num){
+    let first=validNumber(num)
+    let second=special(num)
+    let third=checkAlpha(num)
+    return {
+        numberlength:first,specialchar:second,alphaChar:third
+    }
+}
+let num = "63699A8537"
+console.log(result(num))
