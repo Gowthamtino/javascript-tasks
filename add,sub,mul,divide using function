@@ -1,0 +1,32 @@
+function add(n1, n2) {
+
+    return n1 + n2
+}
+function sub(n1, n2) {
+    return n1 - n2
+}
+
+function multiply(n1, n2) {
+    return n1 * n2
+}
+function divide(n1, n2) {
+    return n1 / n2
+}
+function result(n1,n2) {
+    sum = add(n1,n2)
+    diff= sub(n1,n2)
+    mul=multiply(n1,n2)
+    div=divide(n1,n2)
+   return {
+        sum: sum,
+        diff: diff,
+        multiply: mul,
+        divide: div
+}
+}
+let a=result(3,5)
+console.log(a)
+
+
+
+
