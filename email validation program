@@ -1,0 +1,176 @@
+let email = "gowtham002@.gmail.com"
+let notAllowed = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", "_", " ", ">", "<", "/", ",", ";", "{", "}", "[", "]", "`", "~", "?", "|", "'"];
+let allowedUser = "abcdefghijklmnopqrstuvwxyz0123456789._";
+let allowedUser1 = "abcdefghijklmnopqrstuvwxyz0123456789"
+let allowedDomain = "abcdefghijklmnopqrstuvwxyz";
+let part = email.split("@")
+console.log(part);
+
+let userName = part[0];
+
+
+let domain = part[1];
+let c = domain.split(".");
+//   console.log(c);
+
+function atsplits(email) {
+    let part = email.split("@");
+    if (part.length !== 2)
+        return "invalid";
+    return "valid"
+}
+// console.log(atsplits(email));
+
+function usernameLength(email) {
+    if (userName.length < 6)
+        return "invalid";
+    return "valid"
+}
+
+function usernameChar(email) {
+    for (let i = 0; i < userName.length; i++) {
+        if (!allowedUser.includes(userName[i]))
+            return "invalid";
+    }
+    return "valid"
+}
+// console.log(usernameChar(email));
+
+function nameStart(email) {
+    // /if (userName[0] === "." || userName[userName.length - 1] === "." || userName[userName.length - 1] === "_")  
+    if (!allowedUser1.includes(userName[0]))
+        return "invalid";
+    return "valid"
+}
+//  console.log(nameStart(email));
+
+ function usernumstart(email){
+    let n="1234567890"
+    if(n.includes(userName[0])){
+        return "invalid"
+    }
+    return "valid"
+ }
+//  console.log(usernumstart(email))
+ 
+
+function nameEnd(email) {
+    if (!allowedUser1.includes(userName[userName.length - 1]))
+        return "invalid";
+    return "valid"
+}
+// console.log(nameEnd(email));
+
+function useridDouble(email) {
+    if (userName.includes("..") || userName.includes("__"))
+        return "invalid";
+    return "valid"
+}
+// console.log(useridDouble(email));
+
+function domainSpcl(email) {
+    for (let i = 0; i < domain.length; i++) {
+        if (notAllowed.includes(domain[i]))
+            return "invalid";
+    }
+    return "valid"
+}
+//  console.log(domainSpcl(email));
+
+function domainDotLess(email) {
+
+    if (c.length <= 1)
+        return "invalid";
+    return "valid"
+}
+//  console.log(domainDot(email));
+
+function domaindotCount(email) {
+    if (c.length > 3)
+        return "invalid"
+    return "valid"
+}
+//  console.log(domaindotCount(email));
+
+function doubledot(email) {
+    if (domain.includes(".."))
+        return "invalid"
+    return "valid"
+}
+//  console.log(doubledot(email));
+
+function domainLast(email) {
+    let lastChar = domain[domain.length - 1];
+    if (notAllowed.includes(lastChar) || lastChar === ".")
+        return "invalid"
+    return "valid"
+}
+//  console.log(domainLast(email));
+
+function domainChar(email) {
+    if (!allowedDomain.includes(domain[0]))
+        return "invalid";
+    return "valid"
+}
+  console.log(domainChar(email));
+
+function domainchar1(email) {
+    const domainName = c[0];
+    for (let i = 0; i < domainName.length; i++) {
+        if (!allowedDomain.includes(domainName[i]))
+            return "invalid";
+    }
+    return "valid"
+}
+// console.log(domainchar1(email));
+
+function domaintl(email) {
+    let n="1234567890"
+    let e = c[1];
+    if (!e || notAllowed.includes(e[0])||(n.includes(e[0])))
+        return "invalid";
+
+    return "valid";
+}
+// console.log(domaintl(email));
+
+function domainNum(email) {
+    let domainParts = email.split("@")[1].split(".");
+    //  console.log(domainParts);
+    
+    for (let i = 0; i < domainParts.length; i++) {
+        // console.log(domainParts[i]);
+        for (let j = 0; j < domainParts[i].length; j++) {
+            // console.log(domainParts[i]);        
+            if (!allowedDomain.includes(domainParts[i][j])) {
+                return "invalid";
+            }
+        }
+    }
+    return "valid";
+}
+function userDot(email){
+    if(userName[userName.length-1]==="."){
+        return "invalid"
+    }
+    return "valid"
+}
+console.log(userDot(email));
+
+
+function validateEmail(email) {
+    if ((atsplits(email) === "valid") && (usernameLength(email) === "valid") && (usernameChar(email) === "valid") && (nameStart(email) === "valid") && (nameEnd(email)) &&(useridDouble(email) === "valid") && (domainSpcl(email) === "valid")
+        && (domainDotLess(email) === "valid") && (domainLast(email) === "valid") && (domainChar(email)==="valid")&&(domainchar1(email) === "valid") && (domaintl(email) === "valid")&&(domainNum(email)==="valid")&&(domaindotCount(email)==="valid")&&(doubledot(email)==="valid")&&(usernumstart(email)==="valid")&&(userDot(email)==="valid")) {
+        return "valid"
+    }
+    return "invalid"
+}
+console.log(validateEmail(email));
+
+
+
+
+
+
+
+
