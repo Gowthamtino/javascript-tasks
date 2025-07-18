@@ -1,0 +1,16 @@
+
+let n = [3, 4, 5, [1, 7, 2], [10, 8, 9]]
+let asc = []
+function order(n) {
+    for (let i = 0; i < n.length; i++) {
+        if (typeof n[i] != "object") {
+            asc.push(n[i])
+        }
+        else {
+            order(n[i])
+        }
+    }
+    return asc.sort(function (a, b) { return a - b });
+}
+order(n)
+console.log(asc);
