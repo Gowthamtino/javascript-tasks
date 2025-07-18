@@ -1,0 +1,29 @@
+// nestedarrayfunction
+let n = [3, 4, 5, [1, 7, 2], [10, 8, 9]]
+let asc = []
+function order(n) {
+    for (let i = 0; i < n.length; i++) {
+        if (typeof n[i] != "object") {
+            asc.push(n[i])
+        }
+        else {
+            order(n[i])
+        }
+    }
+}
+order(n)
+console.log(asc);
+
+function ascending(asc) {
+    for (let i = 0; i < asc.length - 1; i++) {
+        for (let j = i + 1; j < asc.length; j++) {
+            if (asc[i] > asc[j]) {
+                a = asc[i]
+                asc[i] = asc[j]
+                asc[j] = a
+            }
+        }
+    }
+    return asc
+}
+console.log(ascending(asc));
