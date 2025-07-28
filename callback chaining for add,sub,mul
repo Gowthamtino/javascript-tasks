@@ -1,0 +1,59 @@
+// sum using callback
+
+function sum(a,b,callback){
+    setTimeout(() => {
+        let c=a+b
+        callback(c)
+    }, 2000);
+}
+function showResult(result){
+    console.log("sum is:",result);
+}
+sum(50,30,showResult)
+
+
+// multiply using callback
+
+function multiply(a,b,callback){
+    setTimeout(() => {
+        let c=a*b
+        callback(c)
+    }, 2000);
+}
+function display(result){
+    console.log("multiply is:",result)
+}
+multiply(2,3,display)
+
+
+//callback chaining
+
+function sum(a,b,callback){
+    setTimeout(() => {
+        let c=a+b
+        callback(c)
+    }, 1000);
+}
+function multiply(a,b,callback){
+    setTimeout(() => {
+        let c=a*b
+        callback(c)
+    }, 2000);
+}
+function sub(a,b,callback){
+    setTimeout(() => {
+        let c=b-a
+        callback(c)
+    }, 1000);
+}
+sum(8, 4, function(addResult) {
+    console.log("Addition:", addResult);
+
+multiply(8, 4, function(mulresult) {
+    console.log("multiplication:",mulresult);
+
+sub(8, 4, function(subresult) {
+    console.log("subtract :", subresult);
+  });
+    });
+});
