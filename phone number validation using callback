@@ -1,0 +1,65 @@
+function validNumber(num, callback) {
+    setTimeout(() => {
+        if (typeof num === "string" && num.length === 10) {
+            result = { success: true };
+        }
+        else {
+            result = { success: false, message: "Invalid input or length" }
+        }
+        callback(result);
+    }, 1000);
+}
+
+function specialChar(num, callback) {
+    setTimeout(() => {
+        let chars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", ","];
+        for (let i = 0; i < num.length; i++) {
+            if (chars.includes(num[i])) {
+                result = { success: false, message: "Number contains special characters" };
+                break
+            }
+            else {
+                result = { success: true };
+            }
+        }
+
+        callback(result);
+    }, 1000);
+}
+
+function alpha(num, callback) {
+    setTimeout(() => {
+        let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let result = { success: true };
+        for (let i = 0; i < num.length; i++) {
+            if (alphabet.includes(num[i])) {
+                result = { success: false, message: "Number contains alphabet characters" };
+                break;
+            }
+        }
+
+        callback(result);
+    }, 1000);
+}
+function result(num, Callback2) {
+    validNumber(num, function (first) {
+        if (first.success===false)
+            return Callback2(first);
+
+        specialChar(num, function (second) {
+            if (second.success===false)
+                return Callback2(second);
+
+            alpha(num, function (third) {
+                if (third.success===false)
+                    return Callback2(third);
+
+                Callback2({ success: true, message: "The number is valid" });
+            });
+        });
+    });
+}
+result("95068p9457", function (output) {
+    console.log(output);
+});
+
