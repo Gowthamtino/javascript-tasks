@@ -1,0 +1,62 @@
+let num = "63695786907"
+let validNumber = new Promise((resolve, reject) => {
+         setTimeout(() => {
+         let success = true
+         if (num.length === 10) {
+             success = true
+             resolve(" success=true");
+         }
+         else {
+             reject(`success:false, message : Number does not have valid length `);
+         }
+     }        
+     )        
+ }, 3000);    
+
+let specialChar = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        let chars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", ",", "."];
+        let mixed = false
+        for (let i = 0; i < num.length; i++) {
+            for (let j = 0; j < chars.length; j++) {
+                if (num[i] === chars[j]) {
+                    mixed = true
+                }
+            }
+        }
+        if (mixed == true) {
+            reject("success: false, message: Number contains special characters");
+        }
+        else {
+            resolve("success: true");
+        }
+    })        
+    }, 4000); 
+
+let alpha = new Promise((resolve, reject) => {
+    let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    setTimeout(() => {
+        let hasalpha = false
+        for (let i = 0; i < num.length; i++) {
+            for (let j = 0; j < alphabet.length; j++) {
+                if (num[i] === alphabet[j]) {
+                    hasalpha = true
+                }
+            }
+        }
+        if (hasalpha == true) {
+            reject("success: false, message:Number contains alphabet characters")
+        }
+        else {
+            resolve("success: true")
+        }
+    })        
+    },15000); 
+
+Promise.all([validNumber, specialChar, alpha])
+    .then(message => {
+        console.log("sucess:true,message:number valid");
+    })
+    .catch(message => {
+        console.log(message);
+    })
