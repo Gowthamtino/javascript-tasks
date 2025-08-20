@@ -1,0 +1,67 @@
+async function getData(){
+   const response=await fetch("https://mimic-server-api.vercel.app/quotes")
+const data=response.json()
+console.log(data)
+.catch(error=>console.log("error",error))
+}
+getData()
+
+
+async function addQuotes() {
+  try {
+    const response = await fetch("https://mimic-server-api.vercel.app/quotes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        quote: "believe in yourself",
+        author: "Gowtham",
+      }),
+    });
+    const data = await response.json();
+    console.log("Quote added:", data);
+  } catch (error) {
+    console.error("Error adding quote:", error);
+  }
+}
+
+addQuotes();
+
+
+async function updateQuotes(){
+    try{
+        const response=await fetch("https://mimic-server-api.vercel.app/quotes/14",{
+             method:"PUT",
+             headers: {"Content-Type":"application/json", 
+             },
+             body: JSON.stringify({
+                 quotes:"Trust your process",
+                 author:"Gowtham B"
+             })
+            })
+            const data=await response.json()
+          getData()  
+          console.log(data);
+    }
+    catch(error){
+        console.log(error)
+        
+    }
+
+}
+updateQuotes()
+
+
+
+async function deleteQuotes(){
+    const response= await fetch("https://mimic-server-api.vercel.app/quotes/13",{
+        method:"DELETE"
+    })
+    const data=await response.json()
+
+getData()  
+    console.log(data)
+}
+
+console.log(deleteQuotes());
